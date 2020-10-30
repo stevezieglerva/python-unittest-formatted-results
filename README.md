@@ -28,7 +28,7 @@ By default, all test files in the tests/ directory will be run:
    ---------------------------------------------------
    ❌ error | test_error                                                                      
    ❗ fail  | test_fail                                                                       
-   ✅  pass  | test_isupper                                                                    
+   ✅  pass | test_isupper                                                                    
    ➖ skip  | test_skip                                                                       
    ✅ pass  | test_split                                                                      
    ✅ pass  | test_upper                                                                      
@@ -68,9 +68,3 @@ By default, all test files in the tests/ directory will be run:
 
 ```
 
-## Output
-
-```json
-
-
-```
