@@ -48,6 +48,8 @@ By default, all test files in the tests/ directory will be run:
    ✅ pass  | test_pass_db                                                                    
 
 🗂  Total Tests: 10
+
+😡 Some tests failed!
 ```
 
 
@@ -66,5 +68,6 @@ To run tests with just "DB" in the filename:
 
 🗂  Total Tests: 2
 
+😡 Some tests failed!
 ```
 
