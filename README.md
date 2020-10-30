@@ -18,7 +18,7 @@ python3 test_and_format.py [start_dir] [pattern]
 
 By default, all test files in the tests/ directory will be run:
 ```bash
->python3 test_and_format.py  
+> python3 test_and_format.py  
 
 🗃  Test Results:
 
@@ -51,9 +51,9 @@ By default, all test files in the tests/ directory will be run:
 ```
 
 
-
+To run tests with just "DB" in the filename:
 ```
->python3 test_and_format.py "tests" "*DB*.*"
+> python3 test_and_format.py "tests" "*DB*.*"
 
 🗃  Test Results:
 
