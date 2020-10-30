@@ -54,6 +54,8 @@ if __name__ == "__main__":
 
     print_results(pattern)
 
-    if test_results.wasSuccessful() == False:
-        print(test_results)
+    if test_results.wasSuccessful() == True:
+        print("👍🎉 All tests passed!")
+    else:
+        print("😡 Some tests failed!")
         exit(1)
