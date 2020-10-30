@@ -25,17 +25,20 @@ def print_results(pattern):
                     test_name = test["test_name"]
                     status = test["status"]
                     emoji = emojis[status]
-                    line = f"   {emoji} {status} | {test_name:<80}"
+                    line = f"   {emoji} {status:<5} | {test_name:<80}"
                     print(line)
                     test_count = test_count + 1
     print(f"\n🗂  Total Tests: {test_count}\n")
 
 
 if __name__ == "__main__":
-    for arg in sys.argv:
-        print(arg)
-    start_dir = sys.argv[1]
-    pattern = sys.argv[2]
+    start_dir = "tests/"
+    pattern = "test_*.*"
+    if len(sys.argv) > 1:
+        for arg in sys.argv:
+            print(arg)
+        start_dir = sys.argv[1]
+        pattern = sys.argv[2]
 
     print(f"\nstart_dir: {start_dir}")
     print(f"pattern: {pattern}\n")
@@ -43,7 +46,7 @@ if __name__ == "__main__":
     suite = unittest.defaultTestLoader.discover(start_dir, pattern=pattern)
 
     runner = HtmlTestRunner.HTMLTestRunner(
-        template="report_template.txt",
+        template="report_template_json.txt",
         report_name="test_results.json",
         add_timestamp=False,
     )
