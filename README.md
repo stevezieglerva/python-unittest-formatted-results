@@ -71,3 +71,10 @@ To run tests with just "DB" in the filename:
 😡 Some tests failed!
 ```
 
+You can also run the test.sh script to activate virtual environment, install requirements, and execute the tests
+
+```
+> . test.sh
+```
+
+
