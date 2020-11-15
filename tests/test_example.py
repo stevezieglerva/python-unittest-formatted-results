@@ -1,11 +1,14 @@
 import HtmlTestRunner
 import unittest
 
+from source_code_1 import *
+
 
 class TestStringMethods(unittest.TestCase):
     """ Example test for HtmlRunner. """
 
     def test_upper(self):
+        func_1(0)
         self.assertEqual("foo".upper(), "FOO")
 
     def test_isupper(self):
