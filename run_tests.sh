@@ -10,12 +10,13 @@ then
 else
     coverage run  --omit=*/venv/*.*,*/tests/*.py,test_and_format.py test_and_format.py
     coverage report 
-    coverage report | grep TOTAL | sed "s/^.*  //g" | grep -e "[7-9][0-9]%"
+    # Check if coverage is > 70%
+    coverage report | grep TOTAL | sed "s/^.*  //g" | tail -1 | grep -e "[7-9][0-9]%"
     if [ $? -ne 0 ]
     then
-        echo "⛔ Found coverage is too low"
+        echo "⛔ Found coverage is too low!"
     else
-        echo "🏆 Coverage is good"
+        echo "🏆 Coverage is good!"
     fi
 fi
 
