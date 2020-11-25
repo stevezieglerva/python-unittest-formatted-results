@@ -26,7 +26,7 @@ else
     fi
     coverage run  --omit=*/venv/*.*,*/tests/*.py,test_and_format.py test_and_format.py tests/ "$test_file_pattern"
     coverage report 
-    coverage report | tail -1 | sed "s/^.*  //g" | grep -e "[7-9][0-9]%"
+    coverage report | tail -1 | sed "s/^.*  //g" | grep -E -w "[7-9][0-9]%|100%"
     if [ $? -ne 0 ]
     then
         echo "⛔ Found coverage is too low"
