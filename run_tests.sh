@@ -4,19 +4,34 @@ rm reports/*.*
 
 echo "Running: $1"
 
+
+rm test_fakes3*.*
+
+
 if [[ $1 == "simple" ]] 
 then
-    python3 -m unittest discover -s tests 
+    export test_file_pattern="test_*.*"
+    if [[ -n "$2" ]] 
+    then
+        echo "found pattern"
+        export test_file_pattern="$2"
+    fi
+    python3 -m unittest discover -s tests -p "$test_file_pattern"
 else
-    coverage run  --omit=*/venv/*.*,*/tests/*.py,test_and_format.py test_and_format.py
+    export test_file_pattern="test_*.*"
+    if [[ $# -ne 0 ]] 
+    then
+        echo "found pattern"
+        export test_file_pattern="$1"
+    fi
+    coverage run  --omit=*/venv/*.*,*/tests/*.py,test_and_format.py test_and_format.py tests/ "$test_file_pattern"
     coverage report 
-    # Check if coverage is > 70%
     coverage report | tail -1 | sed "s/^.*  //g" | grep -e "[7-9][0-9]%"
     if [ $? -ne 0 ]
     then
-        echo "⛔ Found coverage is too low!"
+        echo "⛔ Found coverage is too low"
     else
-        echo "🏆 Coverage is good!"
+        echo "🏆 Coverage is good"
     fi
 fi
 
