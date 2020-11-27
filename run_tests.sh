@@ -10,6 +10,7 @@ rm test_fakes3*.*
 
 if [[ $1 == "simple" ]] 
 then
+    # run the simplified, normal version of unittest to see out script output
     export test_file_pattern="test_*.*"
     if [[ -n "$2" ]] 
     then
@@ -18,6 +19,7 @@ then
     fi
     python3 -m unittest discover -s tests -p "$test_file_pattern"
 else
+    # run the formatted version of the tests and calculte coverage
     export test_file_pattern="test_*.*"
     if [[ $# -ne 0 ]] 
     then
@@ -26,6 +28,7 @@ else
     fi
     coverage run  --omit=*/venv/*.*,*/tests/*.py,test_and_format.py test_and_format.py tests/ "$test_file_pattern"
     coverage report 
+    # look for coverage > 70%
     coverage report | tail -1 | sed "s/^.*  //g" | grep -E -w "[7-9][0-9]%|100%"
     if [ $? -ne 0 ]
     then
