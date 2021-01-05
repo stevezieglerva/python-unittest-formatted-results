@@ -16,7 +16,7 @@ Run the bash script run_tests.sh
 ```
 
 ### Arguments
-* simple - If the first argument is "simple", the typical unittest output will be displayed. This can be useful to see specific test output
+* simple|fail - If the first argument is "simple", the typical unittest output will be displayed. This can be useful to see specific test output. If the first argument is "fail", the script will return an error code if any tests failed. This is useful to trigger a failing build when tests fail.
 * test file pattern - test filename pattern, enclosed in quotes, under the tests/ folder to limit the test files executed. **Note:** The pattern must end in ".*" in order for both the .py test execution and .html CLI output filtering.
 
 

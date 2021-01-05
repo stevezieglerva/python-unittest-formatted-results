@@ -4,9 +4,10 @@ rm reports/*.*
 
 echo "Running: $1"
 
-
-rm test_fakes3*.*
-
+# . run_tests.sh simple
+# . run_tests.sh "*unit*.*"
+# . run_tests.sh fail 
+# . run_tests.sh fail "*unit*.*" 
 
 if [[ $1 == "simple" ]] 
 then
@@ -19,7 +20,7 @@ then
     fi
     python3 -m unittest discover -s tests -p "$test_file_pattern"
 else
-    # run the formatted version of the tests and calculte coverage
+    # run the formatted version of the tests and calculate coverage
     export test_file_pattern="test_*.*"
     if [[ $# -ne 0 ]] 
     then
@@ -35,6 +36,12 @@ else
         echo "⛔ Found coverage is too low"
     else
         echo "🏆 Coverage is good"
+    fi
+
+    # If fail argument provided, exit with an error code
+    if [[ $1 == "fail" ]] 
+    then
+        exit 1
     fi
 fi
 
